@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM WIKI 知識庫（版本 B：新手村闖關地圖）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#efefef;--dot:#d6d6d6;--teal:#D1E9E9;--teal-deep:#3E7C7C;--ink:#3d352e;--ink2:#6e6359;--peach:#f7c9a9;--butter:#f3e098;--sky:#bfe0f5;--btn:#f4df9b;--btn-hover:#edd177;--card:#fdfefe}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC',sans-serif;background:radial-gradient(var(--dot) 1.5px,transparent 1.5px) 0 0/24px 24px,var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden;padding-bottom:70px}
+.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--teal);border-bottom:2.5px solid var(--ink);padding:10px 22px}
+.brand{font-weight:900;letter-spacing:.04em}
+.prog{display:flex;align-items:center;gap:12px;font-weight:700;font-size:.9rem}
+.slots{display:flex;gap:6px}
+.slots i{width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--ink);display:grid;place-items:center;font-style:normal;font-size:.7rem;transition:all .3s}
+.slots i.on{background:var(--butter);transform:scale(1.15) rotate(10deg)}
+.reset{font:inherit;font-size:.78rem;color:var(--ink2);background:none;border:1.5px dashed var(--ink2);border-radius:999px;padding:1px 10px;cursor:pointer}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+.hero{position:relative;overflow:hidden;margin:34px 0 56px;background:var(--teal);border:2.5px solid var(--ink);border-radius:24px;box-shadow:6px 6px 0 var(--ink);padding:46px 44px 42px}
+.cloud{position:absolute;height:26px;background:#fff;border:2px solid var(--ink);border-radius:999px;opacity:.85;animation:drift linear infinite}
+@keyframes drift{from{transform:translateX(-140px)}to{transform:translateX(1200px)}}
+.hero h1{position:relative;font-size:clamp(1.9rem,4.2vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:14px}
+.hl{position:relative;display:inline-block;z-index:1}
+.hl::after{content:"";position:absolute;left:-4px;right:-4px;bottom:4px;height:14px;background:var(--butter);z-index:-1;border-radius:4px}
+.sub{position:relative;max-width:680px;color:var(--ink2);font-weight:500;font-size:1.05rem;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;background:var(--btn);color:var(--ink);text-decoration:none;font-weight:900;font-size:.95rem;padding:9px 22px;border:2px solid var(--ink);border-radius:12px;box-shadow:2px 3px 0 var(--ink);transition:all .15s;position:relative}
+.btn:hover{background:var(--btn-hover);transform:translate(1px,1px);box-shadow:1px 2px 0 var(--ink)}
+.hero .btn{animation:nudge 2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(5px)}}
+.sec{display:flex;align-items:center;gap:10px;font-size:1.45rem;font-weight:900;margin-bottom:6px}
+.sp{color:#e89b9b}
+.hint{color:var(--ink2);font-size:.9rem;margin-bottom:8px}
+.path{position:relative;padding:6px 0}
+.path::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:4px dashed var(--teal-deep);opacity:.45;transform:translateX(-50%)}
+.step{display:grid;grid-template-columns:1fr 76px 1fr;align-items:center;margin:34px 0;opacity:0;transition:opacity .6s,transform .6s}
+.step:nth-child(odd){transform:translateX(-50px)}.step:nth-child(even){transform:translateX(50px)}
+.step.in{opacity:1;transform:none}
+.step .card{grid-column:1;grid-row:1}.step:nth-child(even) .card{grid-column:3}
+.node{grid-column:2;grid-row:1;justify-self:center;z-index:2;width:56px;height:56px;border-radius:50%;background:var(--butter);border:2.5px solid var(--ink);box-shadow:2px 3px 0 var(--ink);display:grid;place-items:center;font-weight:900;font-size:1.3rem;transition:all .3s}
+.step.done .node{background:var(--teal-deep);color:#fff}
+.card{position:relative;background:var(--card);border:2.5px solid var(--ink);border-radius:22px;box-shadow:5px 5px 0 var(--ink);padding:26px 24px 24px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:7px 8px 0 var(--ink)}
+.lv{align-self:flex-start;background:var(--ink);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.1em;padding:2px 12px;border-radius:999px;margin-bottom:10px}
+.badge{align-self:flex-start;background:var(--teal-deep);color:#fff;font-size:.82rem;font-weight:700;padding:4px 14px;border-radius:999px;margin-bottom:12px}
+h3{font-size:1.28rem;font-weight:900;margin-bottom:10px}
+.desc{font-size:.95rem;color:var(--ink2);margin-bottom:18px;flex-grow:1}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tag{font-size:.8rem;font-weight:700;background:var(--teal);border:1.5px solid var(--ink);padding:3px 11px;border-radius:999px}
+.card .btn{align-self:flex-start}
+.stamp{position:absolute;right:14px;top:-16px;transform:rotate(12deg) scale(0);width:64px;height:64px;border-radius:50%;background:var(--peach);border:2.5px dashed var(--ink);display:grid;place-items:center;font-weight:900;font-size:.8rem;text-align:center;line-height:1.1;transition:transform .45s cubic-bezier(.3,1.8,.5,1)}
+.step.done .stamp{transform:rotate(12deg) scale(1)}
+.win{display:none;margin:10px 0 56px;text-align:center;background:var(--butter);border:2.5px solid var(--ink);border-radius:22px;box-shadow:5px 5px 0 var(--ink);padding:22px;font-weight:900;font-size:1.15rem;animation:pop .6s cubic-bezier(.3,1.6,.5,1)}
+.win.show{display:block}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.dir{background:var(--card);border:2.5px solid var(--ink);border-radius:22px;box-shadow:5px 5px 0 var(--ink);padding:26px 28px;margin-top:10px}
+.dir p{font-size:.95rem;color:var(--ink2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;list-style:none;margin-top:18px}
+.tiles a{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 10px;background:var(--teal);border:2px solid var(--ink);border-radius:16px;color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem;text-align:center;box-shadow:2px 3px 0 var(--ink);transition:transform .2s,background .2s}
+.tiles .e{font-size:1.9rem;transition:transform .3s}
+.tiles a:hover{background:var(--butter);transform:translateY(-5px)}
+.tiles a:hover .e{transform:scale(1.3) rotate(-10deg)}
+footer{text-align:center;margin-top:56px;font-size:.88rem;color:var(--ink2)}
+.fx{position:fixed;z-index:30;pointer-events:none;top:-30px;font-size:1.4rem;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(360deg)}}
+@media (max-width:760px){.path::before{left:28px}.step{grid-template-columns:56px 1fr;gap:12px}.step .card,.step:nth-child(even) .card{grid-column:2}.node{grid-column:1;justify-self:start}.step:nth-child(n){transform:translateY(30px)}.step.in{transform:none}.hero{padding:30px 22px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.step{opacity:1;transform:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="top">
+  <span class="brand">🏡 LLM WIKI 新手村</span>
+  <div class="prog"><span id="pt">已完成 0 / 3</span><div class="slots"><i></i><i></i><i></i></div><button class="reset" id="reset" title="清除閱讀紀錄">重設</button></div>
+</div>
+<div class="wrap">
+<header class="hero">
+  <div class="cloud" style="width:90px;top:18px;animation-duration:38s"></div>
+  <div class="cloud" style="width:60px;top:64px;animation-duration:52s;animation-delay:-20s"></div>
+  <div class="cloud" style="width:110px;bottom:20px;animation-duration:45s;animation-delay:-8s"></div>
+  <h1>探索 <span class="hl">LLM WIKI</span>，<br>打造有溫度的知識庫。</h1>
+  <p class="sub">希望透過 ACP 知識網站，讓民眾在諮商前就能先了解相關概念、流程及權益，具備一定的基礎知識後，再進一步參與正式諮商。</p>
+  <a class="btn" href="#path">從第 1 關開始 ↓</a>
+</header>
+<section id="path">
+  <h2 class="sec"><span class="sp">✦</span> 知識介紹</h2>
+  <p class="hint">沿著路線闖三關，建議照順序閱讀，也可以任選一關開始。讀過的關卡會蓋上完成章。</p>
+  <ol class="path" style="list-style:none">
+    <li class="step" data-id="acp"><div class="node">1</div>
+      <article class="card"><span class="stamp">完成<br>啦！</span><span class="lv">第 1 關</span><span class="badge">核心概念 · 諮商流程</span>
+      <h3>什麼是預立醫療照護諮商？</h3>
+      <p class="desc">了解預立醫療照護諮商（ACP）的定義、參與人員資格、醫療委任代理人角色與完成法定簽署的關鍵步驟。</p>
+      <div class="tags"><span class="tag">7 頁簡報</span><span class="tag">棉花糖咖啡風</span><span class="tag">← → 翻頁</span></div>
+      <a href="./presentations/2026-11-15_什麼是預立醫療照護諮商.html" class="btn">開始閱讀 →</a></article></li>
+    <li class="step" data-id="terms"><div class="node">2</div>
+      <article class="card"><span class="stamp">完成<br>啦！</span><span class="lv">第 2 關</span><span class="badge">名詞解析 · 法規基礎</span>
+      <h3>ACP 相關名詞定義總覽</h3>
+      <p class="desc">系統整理《病人自主權利法》中的 12 個關鍵名詞（人員、文件過程、醫療處置）與五大特定臨床條件定義。</p>
+      <div class="tags"><span class="tag">7 頁簡報</span><span class="tag">架構圖解</span><span class="tag">← → 翻頁</span></div>
+      <a href="./presentations/2026-11-15_ACP相關名詞定義.html" class="btn">開始閱讀 →</a></article></li>
+    <li class="step" data-id="ad"><div class="node">3</div>
+      <article class="card"><span class="stamp">完成<br>啦！</span><span class="lv">第 3 關</span><span class="badge">醫療衛教 · 常見問題</span>
+      <h3>預立醫療決定（AD）常見問題</h3>
+      <p class="desc">完整解析預立醫療決定的核心觀念、五大特定臨床條件、安寧緩和醫療（DNR）差異比較，以及四步驟簽署流程與費用補助疑問。</p>
+      <div class="tags"><span class="tag">互動簡報</span><span class="tag">迷思破解</span></div>
+      <a href="./presentations/2026-11-15_預立醫療決定常見問題.html" class="btn">開始閱讀 →</a></article></li>
+  </ol>
+  <div class="win" id="win">🎉 三關都讀完囉！新手村畢業！</div>
+</section>
+<section>
+  <h2 class="sec"><span class="sp">✦</span> Wiki 知識分類目錄</h2>
+  <div class="dir"><p>點擊下方分類可直接瀏覽對應的 Wiki 知識庫文件與系統日誌：</p>
+  <ul class="tiles">
+    <li><a href="./index.md"><span class="e">🗂️</span>知識總索引 (Index)</a></li>
+    <li><a href="./wiki/concepts/README.md"><span class="e">📚</span>核心概念 (Concepts)</a></li>
+    <li><a href="./wiki/sources/README.md"><span class="e">🔗</span>參考來源 (Sources)</a></li>
+    <li><a href="./notes/README.md"><span class="e">📝</span>研究筆記 (Notes)</a></li>
+    <li><a href="./log.md"><span class="e">🕒</span>維護紀錄 (Log)</a></li>
+  </ul></div>
+</section>
+<footer><p>LLM WIKI Project · Hosted on GitHub Pages</p></footer>
+</div>
+<script>
+const KEY='llmwiki-visited',steps=[...document.querySelectorAll('.step')],reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let seen=[];try{seen=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(seen))}catch(e){}}
+function confetti(){if(reduce)return;const ic=['⭐','🎈','🌸','💛','✨'];for(let i=0;i<26;i++){const s=document.createElement('span');s.className='fx';s.textContent=ic[i%5];s.style.left=Math.random()*100+'vw';s.style.animationDuration=2+Math.random()*2+'s';s.style.animationDelay=Math.random()*.6+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),5000)}}
+function render(first){
+  steps.forEach(s=>s.classList.toggle('done',seen.includes(s.dataset.id)));
+  document.querySelectorAll('.slots i').forEach((d,i)=>{d.classList.toggle('on',i<seen.length);d.textContent=i<seen.length?'★':''});
+  document.getElementById('pt').textContent='已完成 '+seen.length+' / 3';
+  const all=seen.length>=3,w=document.getElementById('win');w.classList.toggle('show',all);
+  if(all&&!first)confetti();
+}
+// 讀過的關卡會被記住（只存在這台電腦的瀏覽器）
+steps.forEach(s=>s.querySelector('.btn').addEventListener('click',()=>{if(!seen.includes(s.dataset.id)){seen.push(s.dataset.id);save()}}));
+// 當讀者從簡報返回首頁時，更新畫面
+addEventListener('pageshow',()=>{try{seen=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}render(true)});
+document.getElementById('reset').addEventListener('click',()=>{seen=[];save();render(true)});
+render(true);
+// 捲動時，關卡從兩側滑入
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.15});
+steps.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

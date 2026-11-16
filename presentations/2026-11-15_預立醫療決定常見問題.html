@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預立醫療決定（AD）常見問題 - LLM WIKI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fcfbfa;
+            --card-bg: #ffffff;
+            --text-main: #2d2926;
+            --text-muted: #6b635b;
+            --accent-brown: #8c7a6b;
+            --accent-beige: #e6dfd5;
+            --border-color: #e3ded6;
+            --shadow: 0 10px 30px rgba(140, 122, 107, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-beige);
+            padding-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--accent-beige);
+            color: var(--accent-brown);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: var(--accent-brown);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 18px;
+            background-color: var(--accent-brown);
+            border-radius: 3px;
+        }
+
+        p, ul {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent-brown);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--accent-brown);
+            padding-bottom: 2px;
+        }
+
+        .back-link:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="tag">醫療衛教 · 常見問題</span>
+            <h1>預立醫療決定（AD）常見問題</h1>
+            <p class="subtitle">完整解析預立醫療文件的核心觀念、五大特定臨床條件、安寧緩和差異比較與簽署流程。</p>
+        </header>
+
+        <section class="card">
+            <h2>一、 什麼是預立醫療決定 (AD)？</h2>
+            <p>「預立醫療決定」（Advance Decision, AD）是意願人透過「預立醫療照護諮商」（ACP），事先立下的書面意思表示。當未來處於特定的臨床條件（如末期病人、不可逆昏迷等）時，得選擇接受或拒絕維生醫療、人工營養及流體餵養。</p>
+        </section>
+
+        <section class="card">
+            <h2>二、 五大特定臨床條件</h2>
+            <p>當意願人符合下列五種臨床狀況之一，且經兩位相關專科醫師確診、二次緩和醫療團隊照會確認後，可依其 AD 內容執行醫療決定：</p>
+            <ul>
+                <li><strong>末期病人：</strong>不可治癒且近期內病程進展至死亡已屬不可避免。</li>
+                <li><strong>不可逆轉之昏迷：</strong>大腦功能嚴重受損，無法恢復意識。</li>
+                <li><strong>永久植物人狀態：</strong>無意識、無自主思考能力，僅剩腦幹反射。</li>
+                <li><strong>極重度失智：</strong>認知功能嚴重退化，喪失自我照顧能力。</li>
+                <li><strong>其他經中央主管機關公告之病人疾病狀況：</strong>公告之極痛苦、難治疾病。</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>三、 AD 與傳統安寧緩和醫療 (DNR) 的差異？</h2>
+            <p><strong>安寧緩和醫療 (DNR)</strong> 通常僅針對「末期病人」拒絕心肺復甦術（CPR）；而 <strong>預立醫療決定 (AD)</strong> 的適用範圍更廣，涵蓋上述五大特定臨床條件，且不僅能拒絕 CPR，還可以選擇是否接受「人工營養及流體餵養」（如鼻胃管灌食）。</p>
+        </section>
+
+        <section class="card">
+            <h2>四、 四步驟簽署流程與費用</h2>
+            <ul>
+                <li><strong>步驟一：</strong>預約並參與「預立醫療照護諮商」（ACP），三親等內親屬至少一人陪同。</li>
+                <li><strong>步驟二：</strong>經醫療團隊諮商完畢後，確認意願並填寫書面文件。</li>
+                <li><strong>步驟三：</strong>完成公證或見證人簽署程序。</li>
+                <li><strong>步驟四：</strong>將預立醫療決定註記於健保卡中，正式生效。</li>
+            </ul>
+        </section>
+
+        <a href="../index.html" class="back-link">← 返回 LLM WIKI 首頁</a>
+    </div>
+
+</body>
+</html>
